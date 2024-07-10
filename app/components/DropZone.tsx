@@ -105,7 +105,7 @@ export default function DropZone ({setData}: {setData: (data: Data) => void}) {
                 {
                     slide === 0 ?
                     <h2 className='text-3xl font-bold text-accent mb-4 text-center'>1. Download Your Telegram File</h2> :
-                    <h2 className='text-3xl font-bold text-accent mb-4 text-center'>2. It’s Your Turn to Upload Now</h2> 
+                    <h2 className='text-3xl font-bold text-accent mb-4 text-center'>2. It&apos;s Your Turn to Upload Now</h2> 
 
                 }
                 {
