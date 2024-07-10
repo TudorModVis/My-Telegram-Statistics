@@ -32,7 +32,7 @@ const CustomButton = ({text, value, first, last}: {value: string, text: string, 
   )
 }
 
-export default function ({data, title}: {data: Years[], title: string}) {
+export default function BarChartFunc ({data, title}: {data: Years[], title: string}) {
   const [year, setYear] = useState<string | null>('0');
 
   const renderLegend = (props: any) => {

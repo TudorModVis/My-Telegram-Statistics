@@ -7,7 +7,7 @@ interface Words {
     usage: number,
   }
 
-export default function ({data, title}: {data: Words[], title: string}) {
+export default function WordsChart ({data, title}: {data: Words[], title: string}) {
   const renderLegend = (props: any) => {
     const { payload } = props;
     return (

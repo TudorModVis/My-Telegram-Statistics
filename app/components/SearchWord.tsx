@@ -1,8 +1,7 @@
 import { useState } from "react";
 
-export default function ({data, updateHistory}: {data: any, updateHistory: (word: string, count: number) => void}) {
+export default function SerachWord ({data, updateHistory}: {data: any, updateHistory: (word: string, count: number) => void}) {
     const [word, setWord] = useState("");
-    const [result, setResult] = useState("");
 
     return(
         <div className="flex-1 flex flex-col">
@@ -13,11 +12,8 @@ export default function ({data, updateHistory}: {data: any, updateHistory: (word
                 <form className='flex flex-col items-center gap-6' onSubmit={(event) => {
                     event.preventDefault();
                     const count = data.find((item: any) => item[0] === word);
-                    if (count === undefined || word === "") {
-                        setResult("No uses found")
-                        return;
-                    }
-                    setResult(count[1])
+                    if (count === undefined || word === "") return;
+                    
                     updateHistory(word, count[1])
                 }}>
                     <input type="text" name="" id="" className='bg-transparent text-5xl w-96 focus:outline-none focus:placeholder-transparent text-white text-center' placeholder=' Type a word...' value={word} onChange={e => {setWord(e.currentTarget.value)}}/>

@@ -1,4 +1,4 @@
-export default function () {
+export default function Hero () {
     return (
         <>
             <h1 className="text-6xl font-bold mt-24 text-center text-accent">My Telegram Statistics</h1>

@@ -1,4 +1,4 @@
-export default function ({title, explanation, amount, value}: {title: string, explanation: string, amount: number, value: string}) {
+export default function InfoCard ({title, explanation, amount, value}: {title: string, explanation: string, amount: number, value: string}) {
     return(
         <div className="flex-1">
             <div className="bg-accent rounded-t-md flex justify-center items-center p-1">

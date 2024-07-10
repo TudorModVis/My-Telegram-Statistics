@@ -7,7 +7,7 @@ interface Chats {
   messages: number
 }
 
-export default function ({data, title}: {data: Chats[], title: string}) {
+export default function LineChartFunc ({data, title}: {data: Chats[], title: string}) {
   const renderLegend = (props: any) => {
     const { payload } = props;
     return (
