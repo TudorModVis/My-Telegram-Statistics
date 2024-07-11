@@ -43,6 +43,18 @@ const DragArea = () => {
     )
 }
 
+const DragAreaActive = () => {
+    return (
+        <div className='w-full h-64 rounded-md border-dashed border border-accent flex flex-col justify-center items-center gap-2'>
+             <button className='bg-accent rounded-lg py-3 px-6 flex items-center gap-2 text-lg font-bold mx-auto group hover:bg-opacity-75 transition duration-200'>
+                <img src="/file.svg" alt="right arrow" className='size-8' />
+                Choose File
+            </button>
+            <p className='text-accent text-xs font-medium'>Drag & Drop files here</p>
+        </div>
+    )
+}
+
 export default function DropZone ({setData, setLoading}: {setData: (data: Data) => void, setLoading: (data: boolean) => void}) {
     const [slide, setSlide] = useState(0);
     let sliderRef = useRef<Slider | null>(null);
@@ -103,7 +115,7 @@ export default function DropZone ({setData, setLoading}: {setData: (data: Data) 
                             <input {...getInputProps()} />
                             {
                             isDragActive ?
-                                <p>Drop the files here ...</p> :
+                                <DragAreaActive/> :
                                 <DragArea/>
                             }
                         </div>
