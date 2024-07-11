@@ -43,9 +43,8 @@ const DragArea = () => {
     )
 }
 
-export default function DropZone ({setData}: {setData: (data: Data) => void}) {
+export default function DropZone ({setData, setLoading}: {setData: (data: Data) => void, setLoading: (data: boolean) => void}) {
     const [slide, setSlide] = useState(0);
-    const [loading, setLoading] = useState(false)
     let sliderRef = useRef<Slider | null>(null);
 
     const settings = {
@@ -68,29 +67,12 @@ export default function DropZone ({setData}: {setData: (data: Data) => void}) {
     };
 
     const onDrop = useCallback((acceptedFiles: Array<File>) => {
+        setLoading(true);
         const file:any = new FileReader;
         file.addEventListener('load', async () => {
-            setLoading(true);
             const base64String = file.result.split(',')[1];
             const jsonString = Buffer.from(base64String, 'base64').toString('utf-8');
             setData(getData(JSON.parse(jsonString)));
-            setLoading(false);
-
-            // fetch("/api", {
-            //     method: "POST",
-            //     headers: {
-            //         'Content-Type': 'application/json'
-            //       },
-            //     body: JSON.stringify({ dataURI: file.result })
-            // })
-            // .then(response => response.json())
-            // .then(data => {
-            //     setData(data);
-            //     setLoading(false);
-            // })
-            // .catch(error => {
-            //     console.error('Error:', error);
-            // });
         });
 
         file.readAsDataURL(acceptedFiles[0]);
@@ -99,13 +81,6 @@ export default function DropZone ({setData}: {setData: (data: Data) => void}) {
 
     return (
         <>
-            {
-                loading && 
-                <div className="fixed left-0 top-0 w-screen h-screen bg-black bg-opacity-50 flex justify-center items-center z-50">
-                    <p className="font-bold text-lg text-white">Loading...</p>
-                </div>
-            }
-            
             <div className='bg-semi-black py-12 rounded-xl w-[50rem] mx-auto mb-16'>
                 {
                     slide === 0 ?

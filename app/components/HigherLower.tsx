@@ -49,7 +49,7 @@ export default function HigherLower ({data}: {data: any}) {
             <div className="bg-accent rounded-t-md flex justify-center items-center p-1">
                 <h3 className="font-bold text-xl">Higher/Lower</h3>
             </div>
-            <div className="flex relative bg-semi-black mb-4 rounded-md p-4 h-48 items-center">
+            <div className="flex relative bg-semi-black mb-24 rounded-md p-4 h-48 items-center">
                     <motion.div variants={{start: {opacity: [0, 100]}, stop: {opacity: 0}}} animate={gameState === "wrong" ? "start" : "stop"} transition={{type: "easeIn"}} className="w-full h-full absolute left-0 top-0 rounded-md bg-black bg-opacity-85 z-10 flex justify-center items-center flex-col gap-2 border-2 border-semi-black" style={{display: gameState === "wrong" ? "flex" : "none"}}>
                         <p className="text-white font-medium text-3xl">Score: {score}</p>
                         <button className="text-accent px-6 py-2 border border-white rounded-md font-medium bg-black hover:bg-white hover:text-black transition duration-200" onClick={() => {setGameState("unanswered"); setScore(0); setFirstWord(randomWord()); setSecondWord(randomWord());}}>Try again</button>

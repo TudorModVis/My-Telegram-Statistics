@@ -35,16 +35,25 @@ interface Data {
 
 export default function DataSection() {
     const [data, setData] = useState<Data | null>(null);
+    const [loading, setLoading] = useState(false)
 
     if (data === null) {
       return (
-          <DropZone setData={(setData)}/>
+        <>
+            {
+              loading && 
+              <div className="fixed left-0 top-0 w-screen h-screen bg-black bg-opacity-50 flex justify-center items-center z-50">
+                  <p className="font-bold text-lg text-white">Loading...</p>
+              </div>
+            }
+            <DropZone setData={(setData)} setLoading={setLoading}/>
+        </>
       )
     }
 
     return (
         <>
-          <DropZone setData={(setData)}/>
+          <DropZone setData={(setData)} setLoading={setLoading}/>
           <LineChart data={data.timeline} title="Messages timeline"/>
           <div className="flex gap-4 my-4">
             <BarChart data={data.chats} title="Contacts"/>
