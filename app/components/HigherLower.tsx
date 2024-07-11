@@ -59,7 +59,7 @@ export default function HigherLower ({data}: {data: any}) {
                 <p className="absolute right-3 bottom-2 text-white">Score: {score}</p>
                 <motion.div className="w-1/2 flex justify-center items-center" variants={{start: {scale: [.8, 1]}, stop: {scale: 1}}} animate={gameState === "unanswered" ? "start" : "stop"}>
                     <div className="flex flex-col items-center gap-1">
-                        <p className="text-4xl  text-white">"{firstWord[0]}"</p>
+                        <p className="text-4xl  text-white">&quot;{firstWord[0]}&quot;</p>
                         <p className=" text-white">used</p>
                         <p className="text-4xl text-accent ">{firstWord[1]}</p>
                         <p className="text-white">times</p>
@@ -68,7 +68,7 @@ export default function HigherLower ({data}: {data: any}) {
 
                 <motion.div className="w-1/2 flex justify-center items-center" variants={{start: {scale: [.8, 1]}, stop: {scale: 1}}} animate={gameState === "unanswered" ? "start" : "stop"}>
                     <div className="flex flex-col items-center gap-1">
-                        <p className="text-4xl text-center text-white">"{secondWord[0]}"</p>
+                        <p className="text-4xl text-center text-white">&quot;{secondWord[0]}&quot;</p>
                         <p className="text-center text-white">used</p>
                         {gameState === "unanswered" ? 
                             <>
@@ -76,7 +76,7 @@ export default function HigherLower ({data}: {data: any}) {
                                     <button className="text-accent px-6 py-2 border border-white rounded-md mr-3 flex gap-2 items-center justify-center font-medium hover:bg-white hover:text-black higher-lower-button transition duration-200" onClick={() => {onAnswerClicked(true)}}>Higher <img src="../up-arrow.svg" alt="" className="size-3 transition-all duration-200" /></button>
                                     <button className="text-accent px-6 py-2 border border-white rounded-md flex gap-2 items-center justify-center font-medium hover:bg-white hover:text-black higher-lower-button transition duration-200" onClick={() => {onAnswerClicked(false)}}>Lower <img src="../up-arrow.svg" alt="" className="size-3 rotate-180 transition-all duration-200" /></button>
                                 </div>
-                                <p className="text-white">than "{firstWord[0]}"</p>
+                                <p className="text-white">than &quot;{firstWord[0]}&quot;</p>
                             </>
                             :
                             <>
