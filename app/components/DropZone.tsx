@@ -56,12 +56,12 @@ const DragAreaActive = () => {
 }
 
 const steps = [
-  <p className='text-sm text-gray italic mb-8 text-center'>1. Click the <span className="font-bold">three horizontal bars</span> in the upper-left corner to access the sidebar menu.</p>,
-  <p className='text-sm text-gray italic mb-8 text-center'>2. Click <span className="font-bold">Settings</span>.</p>,
-  <p className='text-sm text-gray italic mb-8 text-center'>3. Click <span className="font-bold">Advanced</span> in the settings menu.</p>,
-  <p className='text-sm text-gray italic mb-8 text-center'>4. Scroll down, and at the bottom of the advanced settings, click <span className="font-bold">Export Telegram Data</span>.</p>,
-  <p className='text-sm text-gray italic mb-8 text-center'>5. Select <span className='text-[#F43C3C] font-bold'>Account Information</span> & <span className='text-[#F43C3C] font-bold'>Machine-Readable JSON</span> | Unselect <span className='text-[#F43C3C] font-bold'>Media</span></p>,
-  <p className='text-sm text-gray italic mb-8 text-center'>Upload the JSON file with the correct settings here</p>,
+  <p key="step-1" className='text-sm text-gray italic mb-8 text-center'>1. Click the <span className="font-bold">three horizontal bars</span> in the upper-left corner to access the sidebar menu.</p>,
+  <p key="step-2" className='text-sm text-gray italic mb-8 text-center'>2. Click <span className="font-bold">Settings</span>.</p>,
+  <p key="step-3" className='text-sm text-gray italic mb-8 text-center'>3. Click <span className="font-bold">Advanced</span> in the settings menu.</p>,
+  <p key="step-4" className='text-sm text-gray italic mb-8 text-center'>4. Scroll down, and at the bottom of the advanced settings, click <span className="font-bold">Export Telegram Data</span>.</p>,
+  <p key="step-5" className='text-sm text-gray italic mb-8 text-center'>5. Select <span className='text-[#F43C3C] font-bold'>Account Information</span> & <span className='text-[#F43C3C] font-bold'>Machine-Readable JSON</span> | Unselect <span className='text-[#F43C3C] font-bold'>Media</span></p>,
+  <p key="step-6" className='text-sm text-gray italic mb-8 text-center'>Upload the JSON file with the correct settings here</p>,
 ]
 
 export default function DropZone ({setData, setLoading}: {setData: (data: Data) => void, setLoading: (data: boolean) => void}) {
