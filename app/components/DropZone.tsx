@@ -33,7 +33,7 @@ interface Data {
 
 const DragArea = () => {
     return (
-        <div className='w-full h-64 rounded-md border-dashed border border-gray flex flex-col justify-center items-center gap-2'>
+        <div className='w-full h-[428px] rounded-md border-dashed border border-gray flex flex-col justify-center items-center gap-2'>
              <button className='bg-accent rounded-lg py-3 px-6 flex items-center gap-2 text-lg font-bold mx-auto group hover:bg-opacity-75 transition duration-200'>
                 <img src="/file.svg" alt="right arrow" className='size-8' />
                 Choose File
@@ -45,7 +45,7 @@ const DragArea = () => {
 
 const DragAreaActive = () => {
     return (
-        <div className='w-full h-64 rounded-md border-dashed border border-accent flex flex-col justify-center items-center gap-2'>
+        <div className='w-full h-[428px] rounded-md border-dashed border border-accent flex flex-col justify-center items-center gap-2'>
              <button className='bg-accent rounded-lg py-3 px-6 flex items-center gap-2 text-lg font-bold mx-auto group hover:bg-opacity-75 transition duration-200'>
                 <img src="/file.svg" alt="right arrow" className='size-8' />
                 Choose File
@@ -54,6 +54,15 @@ const DragAreaActive = () => {
         </div>
     )
 }
+
+const steps = [
+  <p className='text-sm text-gray italic mb-8 text-center'>1. Click the <span className="font-bold">three horizontal bars</span> in the upper-left corner to access the sidebar menu.</p>,
+  <p className='text-sm text-gray italic mb-8 text-center'>2. Click <span className="font-bold">Settings</span>.</p>,
+  <p className='text-sm text-gray italic mb-8 text-center'>3. Click <span className="font-bold">Advanced</span> in the settings menu.</p>,
+  <p className='text-sm text-gray italic mb-8 text-center'>4. Scroll down, and at the bottom of the advanced settings, click <span className="font-bold">Export Telegram Data</span>.</p>,
+  <p className='text-sm text-gray italic mb-8 text-center'>5. Select <span className='text-[#F43C3C] font-bold'>Account Information</span> & <span className='text-[#F43C3C] font-bold'>Machine-Readable JSON</span> | Unselect <span className='text-[#F43C3C] font-bold'>Media</span></p>,
+  <p className='text-sm text-gray italic mb-8 text-center'>Upload the JSON file with the correct settings here</p>,
+]
 
 export default function DropZone ({setData, setLoading}: {setData: (data: Data) => void, setLoading: (data: boolean) => void}) {
     const [slide, setSlide] = useState(0);
@@ -95,22 +104,29 @@ export default function DropZone ({setData, setLoading}: {setData: (data: Data) 
         <>
             <div className='bg-semi-black py-12 rounded-xl w-[50rem] mx-auto mb-16'>
                 {
-                    slide === 0 ?
-                    <h2 className='text-3xl font-bold text-accent mb-4 text-center'>1. Download Your Telegram File</h2> :
-                    <h2 className='text-3xl font-bold text-accent mb-4 text-center'>2. It&apos;s Your Turn to Upload Now</h2> 
+                    slide < 5 ?
+                    <h2 className='text-3xl font-bold text-accent mb-4 text-center'>Download Your Telegram File</h2> :
+                    <h2 className='text-3xl font-bold text-accent mb-4 text-center'>It&apos;s Your Turn to Upload Now</h2> 
 
                 }
-                {
-                    slide === 0 ?
-                    <p className='text-sm text-gray italic mb-8 text-center'> <span className='text-[#F43C3C] font-bold'>IMPORTANT</span> - Select <span className='text-[#F43C3C] font-bold'>Account Information</span> & <span className='text-[#F43C3C] font-bold'>Machine-Readable JSON</span> | Unselect <span className='text-[#F43C3C] font-bold'>Media</span></p> :
-                    <p className='text-sm text-gray italic mb-8 text-center'>Upload the file with the correct settings here</p>
-
-                }
+                {steps[slide]}
                 <Slider {...settings} className='relative' ref={sliderRef}>
                     <div>
-                        <video src="/ExDataBlog.mp4" className='rounded-md w-[20rem] mx-auto' autoPlay playsInline muted loop></video>
+                        <img src="/steps/step-1.avif" className='rounded-md px-32 w-full mx-auto'></img>
                     </div>
-                    <div className="px-24">
+                    <div>
+                        <img src="/steps/step-2.avif" className='rounded-md px-32 w-full mx-auto'></img>
+                    </div>
+                    <div>
+                        <img src="/steps/step-3.avif" className='rounded-md px-32 w-full mx-auto'></img>
+                    </div>
+                    <div>
+                        <img src="/steps/step-4.avif" className='rounded-md px-32 w-full mx-auto'></img>
+                    </div>
+                    <div>
+                        <img src="/steps/step-5.avif" className='rounded-md px-32 w-full mx-auto'></img>
+                    </div>
+                    <div className="px-32">
                         <div {...getRootProps()}>
                             <input {...getInputProps()} />
                             {
@@ -128,7 +144,18 @@ export default function DropZone ({setData, setLoading}: {setData: (data: Data) 
                         Continue
                         <img src="/right-arrow.svg" alt="right arrow" className='size-4 group-hover:translate-x-1 transition duration-200' />
                     </button> :
-                     <button className='border-2 border-opacity-50 border-white text-white rounded-lg py-3 px-6 flex items-center gap-2 text-sm font-bold mx-auto group hover:bg-opacity-75 transition duration-200 mt-14' onClick={() => {sliderRef.current?.slickPrev()}}>
+                    slide < 5 ?
+                    <div className="flex gap-4 justify-center mt-14">
+                      <button className='border-2 border-opacity-50 border-white text-white rounded-lg py-3 px-6 flex items-center gap-2 text-sm font-bold group hover:bg-opacity-75 transition duration-200' onClick={() => {sliderRef.current?.slickPrev()}}>
+                          <img src="/right-arrow.svg" alt="right arrow" className='size-4 group-hover:-translate-x-1 transition duration-200 invert rotate-180' />
+                          Back
+                      </button>
+                      <button className='border-2 border-accent border-opacity-100 hover:border-opacity-30 bg-accent rounded-lg py-3 px-6 flex items-center gap-2 text-sm font-bold group hover:bg-opacity-75 transition-all duration-200' onClick={() => {sliderRef.current?.slickNext()}}>
+                        Continue
+                        <img src="/right-arrow.svg" alt="right arrow" className='size-4 group-hover:translate-x-1 transition duration-200' />
+                      </button>
+                    </div> :
+                    <button className='border-2 border-opacity-50 border-white text-white rounded-lg py-3 px-6 flex items-center gap-2 text-sm font-bold mx-auto group hover:bg-opacity-75 transition duration-200 mt-14' onClick={() => {sliderRef.current?.slickPrev()}}>
                         <img src="/right-arrow.svg" alt="right arrow" className='size-4 group-hover:-translate-x-1 transition duration-200 invert rotate-180' />
                         Back
                     </button>
